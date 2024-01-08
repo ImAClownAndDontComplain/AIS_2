@@ -61,7 +61,7 @@ class CafeService:
                            prime_cost=product_data.get('prime_cost'),
                            final_cost=product_data.get('final_cost'))
 
-    def add_product(self, product: ProductSerializer) -> ProductSerializer:
+    def add_product(self, product: ProductSerializer) -> None:
         product_data = product.data
         return add_product(name=product_data.get('product_name'),
                            description=product_data.get('description'),
@@ -148,10 +148,6 @@ class CafeService:
             return PaymentSerializer(result)
         return None
 
-    # def add_payment(self, payment: PaymentSerializer) -> None:
-    #     payment_data = payment.data
-    #     # payment_type_id = get_payment_type_by_name(payment_data.payment_type).id
-    #     return add_payment(payment_data.order_id, payment_data.payment_type)
 
     def update_payment(self, payment: PaymentSerializer) -> None:
         payment_data = payment.data

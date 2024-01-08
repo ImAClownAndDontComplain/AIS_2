@@ -28,14 +28,16 @@ class OrderWithProductsSerializer(serializers.Serializer):
     for product in products:
         PRODUCTS.append(product.product_name)
 
-    customers = Customer.objects.all()
-    CUSTOMERS = []
-    for cust in customers:
-        CUSTOMERS.append(cust.customer_name)
-
-    customer = serializers.ListField(
-        child=serializers.ChoiceField(choices=CUSTOMERS)
-    )
+    # customers = Customer.objects.all()
+    # CUSTOMERS = []
+    # for cust in customers:
+    #     CUSTOMERS.append(cust.customer_name)
+    #
+    # customer = serializers.ListField(
+    #     child=serializers.ChoiceField(choices=CUSTOMERS)
+    # )
+    customer = serializers.CharField(max_length=20)
+    
     products = serializers.ListField(
         child=serializers.ChoiceField(choices=PRODUCTS)
     )

@@ -25,11 +25,6 @@ urlpatterns = [
 
     path('zoo_cafe/products_in_order/<int:order_id>&<str:product_name>', views.PutProductInOrder.as_view()),
 
-    # path('zoo_cafe', views.GetPostPutOrder.as_view()),
-
-
-    # path('zoo_cafe/payment/<int:order_id>', views.GetPayment.as_view()),
-
     path('zoo_cafe/payment_type', views.GetPostPaymentType.as_view()),
     path('zoo_cafe/payment_type/<str:payment_type_name>', views.DelPaymentType.as_view()),
 
