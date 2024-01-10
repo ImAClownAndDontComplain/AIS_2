@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-cg3+bqwk4uiv9wcoy-!*11i*1@*_=-8!featjo-!%+ac0g&p5z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -66,6 +66,7 @@ WSGI_APPLICATION = 'cafe_app.wsgi.application'
 
 DATABASES = {
     'default': {
+        'timeout': 999,
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }

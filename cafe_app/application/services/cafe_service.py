@@ -20,10 +20,14 @@ class CafeService:
             return CustomerSerializer(result)
         return result
 
+    # def update_customer_name(self, customer: CustomerSerializer) -> None:
+    #     customer_data = customer.data
+    #     result = get_customer_by_email(customer_data.get('email'))
+    #     return change_customer_name(result.customer_name, customer_data.get('customer_name'))
     def update_customer_name(self, customer: CustomerSerializer) -> None:
         customer_data = customer.data
         result = get_customer_by_email(customer_data.get('email'))
-        return change_customer_name(result.customer_name, customer_data.get('customer_name'))
+        return change_customer_name(result.email, customer_data.get('customer_name'))
 
     def update_customer_email(self, customer: CustomerSerializer) -> None:
         customer_data = customer.data

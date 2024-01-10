@@ -114,8 +114,13 @@ def change_customer_email(cur_email: str, new_email: str) -> None:
     customer.email = new_email
     customer.save()
 
-def change_customer_name(cur_name: str, new_name: str) -> None:
-    customer = get_customer_by_name(cur_name)
+# def change_customer_name(cur_name: str, new_name: str) -> None:
+#     customer = get_customer_by_name(cur_name)
+#     customer.customer_name = new_name
+#     customer.save()
+
+def change_customer_name(email: str, new_name: str) -> None:
+    customer = get_customer_by_email(email)
     customer.customer_name = new_name
     customer.save()
 
