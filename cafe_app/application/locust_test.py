@@ -18,7 +18,7 @@ PAYMENT_TYPES = ['SberPay', 'GooglePay', 'Card', 'QR-code']
 
 class RESTServerUser(HttpUser):
     """ Класс, эмулирующий пользователя / клиента сервера """
-    wait_time = constant_throughput(0.06)
+    wait_time = constant_throughput(0.05)
 
     def on_start(self):
         self.client.get("/api/zoo_cafe/payment_type")    # дефолтная страница - получение списка всех вариантов оплаты
@@ -37,7 +37,7 @@ class RESTServerUser(HttpUser):
 
 
     @tag("get_one_task")
-    @task(10)
+    @task(5)
     def get_one_task(self):
         """ Тест GET-запроса (получение одной записи) """
         product_id = random.randint(0, 7)

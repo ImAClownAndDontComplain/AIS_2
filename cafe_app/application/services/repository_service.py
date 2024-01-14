@@ -62,6 +62,8 @@ def update_order_cost_by_id(order_id: int) -> None:
 
 def add_order(customer_name: str, products: [str], payment_type: str, date_time: datetime):
     customer_id = get_customer_by_name(customer_name)
+    print(customer_name)
+    print(customer_id)
     # date_time = date_time
     # new order
     order = Order.objects.create(customer_id=customer_id, order_cost=0, date_time=date_time)

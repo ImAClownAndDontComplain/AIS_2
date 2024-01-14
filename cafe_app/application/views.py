@@ -39,6 +39,18 @@ class PostOrder(GenericAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class GetOrder(GenericAPIView):
+    serializer_class = OrderWithProductsSerializerGET
+    renderer_classes = [JSONRenderer]
+
+    def get(self, request: Request, order_id: int) -> Response:
+        """ Получение одного заказа по идентификатору """
+        response = service.get_order_by_id(order_id)
+        if response.is_valid():
+            return Response(data=response.data)
+        return Response(response.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class PutProductInOrder(GenericAPIView):
     # serializer_class = ProductSerializer
     renderer_classes = [JSONRenderer]

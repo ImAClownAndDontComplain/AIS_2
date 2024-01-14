@@ -21,6 +21,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('zoo_cafe/order', views.PostOrder.as_view()),
+    path('zoo_cafe/order/orders/<int:order_id>', views.GetOrder.as_view()),
     path('zoo_cafe/order/<str:customer_name>', views.GetDelAllOrders.as_view()),
 
     path('zoo_cafe/products_in_order/<int:order_id>&<str:product_name>', views.PutProductInOrder.as_view()),
