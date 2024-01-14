@@ -44,30 +44,22 @@ class OrderWithProductsSerializer(serializers.Serializer):
     date_time = serializers.DateTimeField()
     payment_type = serializers.ChoiceField(choices=TYPES)
 
+class ProductWithCostSerializer(serializers.Serializer):
+    product_name = serializers.CharField(max_length=20)
+    product_cost = serializers.DecimalField(max_digits=5, decimal_places=2)
 
 class OrderWithProductsSerializerGET(serializers.Serializer):
-    # def __init__(self, order_id: serializers.IntegerField(),
-    #              customer: serializers.CharField(max_length=20),
-    #              order_cost: serializers.DecimalField(max_digits=7, decimal_places=2),
-    #              date_time: serializers.DateTimeField(),
-    #              payment_type: serializers.CharField(max_length=20),
-    #              products: serializers.ListField(
-    #                 child=serializers.CharField(max_length=20),
-    #             )):
-    #     self.order_id = order_id
-    #     self.customer = customer
-    #     self.order_cost = order_cost
-    #     self.payment_type = payment_type
-    #     self.date_time = date_time
-    #     self.products = products
     order_id = serializers.IntegerField()
     customer = serializers.CharField(max_length=20)
     order_cost = serializers.DecimalField(max_digits=7, decimal_places=2)
     products = serializers.ListField(
-        child=serializers.CharField(max_length=20)
+        child=ProductWithCostSerializer()
+        # child=serializers.CharField(max_length=20),
+        # child=DecimalField(max_digits=5, decimal_places=2)
     )
     date_time = serializers.DateTimeField()
     payment_type = serializers.CharField(max_length=20)
+
 
 class OrderSerializer(serializers.Serializer):
     id = serializers.IntegerField()

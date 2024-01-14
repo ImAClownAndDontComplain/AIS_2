@@ -111,7 +111,12 @@ class CafeService:
             products_in_order = get_products_from_order(result.id)
             products = []
             for product in products_in_order:
-                products.append(product.product_name)
+                ProductWithCost = ProductWithCostSerializer(data={
+                    'product_name': product.product_name,
+                    'product_cost': product.final_cost
+                })
+                if ProductWithCost.is_valid():
+                    products.append(ProductWithCost.validated_data)
             customer_name = get_customer_by_order(result.id).customer_name
             payment_type = get_payment_type_by_order(result.id).payment_type
             data = {'order_id': result.id,
