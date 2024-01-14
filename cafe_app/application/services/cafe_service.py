@@ -94,14 +94,7 @@ class CafeService:
                     'order_cost': result.order_cost,
                     'payment_type': payment_type,
                     'date_time': result.date_time}
-            print(data)
             return OrderWithProductsSerializerGET(data=data)
-                                                # order_id=result.id,
-                                                # customer=customer_name,
-                                                # products=products,
-                                                # order_cost=result.order_cost,
-                                                # date_time=result.date_time,
-                                                #  payment_type=payment_type)
         return result
 
     def get_order_by_id(self, order_id: int) -> Optional[OrderWithProductsSerializerGET]:
@@ -125,14 +118,7 @@ class CafeService:
                     'order_cost': result.order_cost,
                     'payment_type': payment_type,
                     'date_time': result.date_time}
-            # print(data)
             return OrderWithProductsSerializerGET(data=data)
-            # order_id=result.id,
-            # customer=customer_name,
-            # products=products,
-            # order_cost=result.order_cost,
-            # date_time=result.date_time,
-            #  payment_type=payment_type)
         return result
 
     def get_all_orders_by_customer(self, name: str) -> OrderSerializer:

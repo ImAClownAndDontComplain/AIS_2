@@ -98,11 +98,3 @@ class OrderProduct(Model):
 
     def __str__(self):
         return str({'id': self.id, 'order_id': self.order_id, 'product_id': self.order_id})
-
-
-# class OrderWithProducts(Model):
-#     id = AutoField(primary_key=True)
-#     customer_id = ForeignKey('Customer', verbose_name='Customer', null=False, on_delete=CASCADE)
-#     order_cost = DecimalField('Full cost', null=False, max_digits=7, decimal_places=2)
-#     date_time = DateTimeField('Date and time', null=False)
-#     products = []

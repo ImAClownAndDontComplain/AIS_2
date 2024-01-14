@@ -28,14 +28,6 @@ class OrderWithProductsSerializer(serializers.Serializer):
     for product in products:
         PRODUCTS.append(product.product_name)
 
-    # customers = Customer.objects.all()
-    # CUSTOMERS = []
-    # for cust in customers:
-    #     CUSTOMERS.append(cust.customer_name)
-    #
-    # customer = serializers.ListField(
-    #     child=serializers.ChoiceField(choices=CUSTOMERS)
-    # )
     customer = serializers.CharField(max_length=20)
     
     products = serializers.ListField(
@@ -54,8 +46,6 @@ class OrderWithProductsSerializerGET(serializers.Serializer):
     order_cost = serializers.DecimalField(max_digits=7, decimal_places=2)
     products = serializers.ListField(
         child=ProductWithCostSerializer()
-        # child=serializers.CharField(max_length=20),
-        # child=DecimalField(max_digits=5, decimal_places=2)
     )
     date_time = serializers.DateTimeField()
     payment_type = serializers.CharField(max_length=20)
@@ -63,7 +53,6 @@ class OrderWithProductsSerializerGET(serializers.Serializer):
 
 class OrderSerializer(serializers.Serializer):
     id = serializers.IntegerField()
-    # customer_name = serializers.CharField(max_length=20)
     order_cost = serializers.DecimalField(max_digits=7, decimal_places=2)
     date_time = serializers.DateTimeField()
 
